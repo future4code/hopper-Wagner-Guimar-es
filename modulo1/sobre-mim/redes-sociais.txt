@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 facebook @wagnerluiz
 intagram @wgr.lz
 twitter @wgr.lz
+=======
+facebook @wgr.lz
+instagram @wgr.lz
+twitter @wgr.lz
+>>>>>>> 71b9fd7efd3edc5f999674dacab8fc4ac437852d
