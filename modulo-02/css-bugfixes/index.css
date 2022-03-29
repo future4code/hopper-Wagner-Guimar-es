@@ -128,7 +128,12 @@ table img{
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+ 
 }
+.container-do-search img{
+    width:25px;
+}
+
 
 
 #back-button {
@@ -144,3 +149,4 @@ table img{
 #back-button:hover {
     background-color: #635a3d
 }
+
