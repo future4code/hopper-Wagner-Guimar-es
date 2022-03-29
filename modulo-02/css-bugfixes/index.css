@@ -38,6 +38,12 @@ div img {
 }
 
 .botao-amarelo {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
     background-color: #ffaf43;
     width: 250px;
     height: 40px;
@@ -47,7 +53,7 @@ div img {
 }
 
 .botao-amarelo:hover {
-    background-color: #c44f00;
+    background-color: #c44f00;;
 }
 
 .container {
@@ -76,7 +82,12 @@ div img {
 }
 
 #container-para-comprar {
+    width: 100vw;
     background-color: #e7eb90;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #container-para-comprar>p {
