@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: 0;
+  border-style: none;
+}
+
+html,
+body {height: 100%;
+  background-color: #26243e;
+}
+
+.container {
+
+  width: 100vw;
+
+
+  /* /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: 60px 1fr 40px;  */
+
+}
+
+/* ---------------HEADER-----------------*/
+
+.header-container {
+  background-color: #141322;
+  display: grid;
+  grid-template-columns: 30vw 50vw 20vw;
+  grid-template-rows: 7vh;
+}
+
+/*-------------LOGO-------------*/
+
+.logo-container {
+  display: flex;
+  padding-left: 15px;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo-container h2 {
+  padding-left: 5px;
+  color: white;
+  font-family: "Oswald", sans-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+.logo-container .logo-img {
+  margin-left: 40px;
+  width: 25px;
+}
+
+/*-------------BARRA PESQUISA-------------*/
+
+.barra-pesquisa {
+  padding-left: 40px;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.input-pesquisa {
+  background-color: rgb(38, 36, 62);
+  padding-left: 20px;
+  text-align: start;
+
+  border-start-start-radius: 3px;
+  border-bottom-left-radius: 3px;
+  height: 30px;
+  width: 30vw;
+}
+
+.input-pesquisa::placeholder {
+  color: white;
+  letter-spacing: 1px;
+  font-size: 13px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 100;
+}
+
+.barra-pesquisa img {
+  border-start-end-radius: 3px;
+  border-end-end-radius: 3px;
+  padding: 7.5px;
+  margin-right: 10px;
+  margin-top: 3px;
+  background-color: rgb(38, 36, 62);
+
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  width: 15px;
+}
+
+/*-------------ICONES NAV BAR-------------*/
+
+.icones-nav-bar {
+  display: flex;
+
+  justify-items: end;
+  align-items: center;
+  align-content: flex-end;
+  justify-content: end;
+  padding-right: 15px;
+}
+
+.foto-conta {
+  margin-right: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+
+.foto-conta:hover {
+  border: 1.5px white solid;
+  transition: 0.2s;
+}
+
+/*-------------CARDS------------*/
+
+.cards-container {
+  padding-top: 200px;
+  width: 100vw;
+  height: 90vh;
+  flex-wrap: wrap;
+
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: row;
+
+
+}
+
+.cards {
+    position: relative;
+  border-radius: 2px;
+  /* box-shadow: 1px 1px 1px 1px rgb(98, 98, 98); */
+  flex-wrap: wrap;
+  margin: 30px;
+
+  width: 350px;
+  height: 300px;
+}
+
+/*-------------FOOTER------------*/
+
+footer {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+footer p {
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 100;
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 8px;
+  color: white;
+}
+
+#img1 {
+
+  border-radius: 2px;
+  width: 350px;
+}
+
+#txt1{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+#txt2{
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(180, 180, 180);
+}
+
+#txt3{
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(180, 180, 180);
+}
+
+#tempo1{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    position:absolute;
+    top: 170px;
+    left: 310px;
+    font-size: 15px;
+
+}
