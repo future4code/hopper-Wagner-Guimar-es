@@ -1,0 +1,212 @@
+{
+  "info": {
+    "_postman_id": "9039f401-2b13-4993-9046-ceddd904b546",
+    "name": "Labefy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GetAllPlaylist",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "wagner-luiz-hopper",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+          "protocol": "https",
+          "host": ["us-central1-labenu-apis", "cloudfunctions", "net"],
+          "path": ["labefy", "playlists"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getPlaylistTracks",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "wagner-luiz-hopper",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+          "protocol": "https",
+          "host": ["us-central1-labenu-apis", "cloudfunctions", "net"],
+          "path": ["labefy", "playlists", ":playlistId", "tracks"],
+          "variable": [
+            {
+              "key": "playlistId",
+              "value": "6a83238f-b0cf-4f0a-ad7e-fbdbafdbdbee"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "addTrackToPlaylist",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "wagner-luiz-hopper",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"Termina Comigo Antes\",\r\n    \"artist\":\"Gusttavo Lima\", \r\n    \"url\":\"https://www.youtube.com/watch?v=rTJSWmgbVwA\"\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks",
+          "protocol": "https",
+          "host": ["us-central1-labenu-apis", "cloudfunctions", "net"],
+          "path": ["labefy", "playlists", ":playlistId", "tracks"],
+          "variable": [
+            {
+              "key": "playlistId",
+              "value": "6a83238f-b0cf-4f0a-ad7e-fbdbafdbdbee"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PostPlaylist",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "wagner-luiz-hopper",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Lolfy \"\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists",
+          "protocol": "https",
+          "host": ["us-central1-labenu-apis", "cloudfunctions", "net"],
+          "path": ["labefy", "playlists"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "searshPlaylist",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "wagner-luiz-hopper",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=Carnaval&=",
+          "protocol": "https",
+          "host": ["us-central1-labenu-apis", "cloudfunctions", "net"],
+          "path": ["labefy", "playlists", "search"],
+          "query": [
+            {
+              "key": "name",
+              "value": "Carnaval"
+            },
+            {
+              "key": null,
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "removeTrackFromPlaylist",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "wagner-luiz-hopper",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks/:trackId",
+          "protocol": "https",
+          "host": ["us-central1-labenu-apis", "cloudfunctions", "net"],
+          "path": ["labefy", "playlists", ":playlistId", "tracks", ":trackId"],
+          "variable": [
+            {
+              "key": "playlistId",
+              "value": "6a83238f-b0cf-4f0a-ad7e-fbdbafdbdbee"
+            },
+            {
+              "key": "trackId",
+              "value": "0f6749d2-267f-4f2f-b959-49d0b6cd6315"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
