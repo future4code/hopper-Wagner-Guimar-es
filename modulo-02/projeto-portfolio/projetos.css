@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgb(0, 0, 0);
+}
+.header-container {
+  display: flex;
+  align-content: flex-end;
+  align-items: flex-end;
+  justify-content: end;
+  justify-items: center;
+  padding: 30px;
+}
+
+header {
+  display: flex;
+  padding-right: 30px;
+  gap: 30px;
+}
+
+header a {
+  font-family: "BIZ UDGothic", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #db2136;
+  text-decoration: none;
+}
+
+#hover:hover {
+  transition: 0.2s ease-in-out;
+  font-size: 19px;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+  color: #f54257;
+}
+
+/* ----------------- PORTFOLIO------------------ */
+
+.port-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.lado__esquerdo {
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  background-color: black;
+  grid-column: 1/2;
+  grid-row: 1/4;
+}
+
+#codigo-blackjack {
+width: 800px;
+padding-left: 100px;
+}
+
+.lado__direito {
+
+  grid-column: 2/3;
+  grid-row: 1
+  /2;
+ 
+}
+
+h2{
+  padding-top: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  justify-items: center;
+  font-family: "BIZ UDGothic", sans-serif;
+  text-align: center;
+  font-size: 70px;
+  letter-spacing: 2px;
+}
+.descricao-projeto{
+  flex-wrap: wrap;
+  font-size: 20px;
+
+}
+strong{
+  padding-left: 10px;
+  color: #db2136;
+
+}
+
+.titulo-blackjack{
+  padding-top: 80px;
+padding-bottom: 100px;
+}
+
+.js{
+  color: #db2136;
+  font-size: 35px;
+}
+
+.link-black-jack{
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  text-decoration: none;
+  font-family: "BIZ UDGothic", sans-serif;
+  color: #db2136;
+}
+
+
+
+
+/* ----------------- FOOTER ------------------ */
+
+footer {
+  width: 100vw;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  font-family: "BIZ UDGothic", sans-serif;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-items: center;
+  padding: 5px;
+  color: #db2136;
+}
