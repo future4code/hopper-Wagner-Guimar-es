@@ -9,7 +9,7 @@ const app = Express();
 app.use(Express.json());
 app.use(cors());
 
-// end-point-para-verificar-todos-os-usuarios(somente para testes)
+// end-point para verificar todos os usuarios (somente para testes)
 app.get("/accounts", (req: Request, res: Response) => {
   let errorCode = 500;
 
@@ -26,42 +26,36 @@ app.get("/accounts", (req: Request, res: Response) => {
   }
 });
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// end-point para criar conta
+
+app.post("/account/create", (req: Request, res: Response) => {
+  let errorCode = 500;
+
+  try {
+    const { name, CPF, birthDate } = req.body;
+
+    const newAccount = {
+      name,
+      CPF,
+      birthDate,
+      balance: 0,
+      statement: [{ value: "", date: "", description: "" }],
+    };
+
+    if (!newAccount) {
+      errorCode = 404;
+      throw new Error("preencha todos os campos");
+    }
+
+    banco_de_dados.push(newAccount);
+    res.status(200).send(banco_de_dados);
+  } catch (error: any) {
+    res.status(errorCode).send(error.message);
+  }
+});
+
+
+
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
     const adress = server.address() as AddressInfo;
