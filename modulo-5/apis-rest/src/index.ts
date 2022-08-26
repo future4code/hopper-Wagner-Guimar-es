@@ -9,13 +9,21 @@ app.use(Express.json());
 app.use(cors());
 
 // endpoint que busque todos os usuários de uma lista.
+
 app.get("/users", (req: Request, res: Response) => {
   let errorCode = 400;
 
   try {
     if (!usersList) {
+      // se a lista de usuarios não conter nada...
       errorCode = 405;
       throw new Error("Usuários não encontrados");
+    }
+
+    if (!usersList.length) {
+      // se a lista de usuários for false...
+      errorCode = 252;
+      throw new Error("Lista de usuários está vazia");
     }
 
     res.status(200).send(usersList);
@@ -28,9 +36,19 @@ app.get("/users", (req: Request, res: Response) => {
 
 app.get("/users/roles", (req: Request, res: Response) => {
   let errorCode = 422;
+  const typeUsers = req.body.type as string;
 
   try {
-    const typeUsers = req.body.type as string;
+    if (!typeUsers) {
+      // se a lista não existir...
+      errorCode = 333;
+      throw new Error("tipo de usuário está faltando (normal/admin)");
+    }
+
+    if (typeUsers !== "ADMIN" && typeUsers !== "NORMAL") {
+      errorCode = 477;
+      throw new Error("Digite um tipo válido admin/normal");
+    }
 
     const adminUsers = usersList.filter(
       (u) => u.type.toUpperCase() === typeUsers.toUpperCase()
