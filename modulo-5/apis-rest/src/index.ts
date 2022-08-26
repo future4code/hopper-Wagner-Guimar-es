@@ -35,19 +35,19 @@ app.get("/users", (req: Request, res: Response) => {
 // endpoint que busque todos os usuários que tenham uma propriedade type específica, recebendo apenas um type por vez.
 
 app.get("/users/roles", (req: Request, res: Response) => {
-  let errorCode = 422;
+  let errorCode = 500;
 
   try {
     const typeUsers = req.body.type as string;
     if (!typeUsers) {
       // se a lista não existir...
-      errorCode = 333;
+      errorCode = 400;
       throw new Error("tipo de usuário está faltando (normal/admin)");
     }
 
     if (typeUsers !== "ADMIN" && typeUsers !== "NORMAL") {
       // se o valor digitado não corresponder com o banco de dados
-      errorCode = 477;
+      errorCode = 403;
       throw new Error("Digite um tipo válido admin/normal");
     }
 
@@ -71,7 +71,7 @@ app.get("/users/:name", (req, res) => {
     const name = req.params.name as string;
     if (!name) {
       // se não for informado nenhum valor...
-      errorCode = 668;
+      errorCode = 400;
       throw new Error("digite um nome de usuário");
     }
     const userSearch = usersList.find(
@@ -93,7 +93,7 @@ app.get("/users/:name", (req, res) => {
 // Crie um endpoint que use o método POST para adicionar um item ao nosso conjunto de usuários.
 
 app.post("/users", (req: Request, res: Response) => {
-  let errorCode = 402;
+  let errorCode = 500;
 
   try {
     const { name, email, type, age } = req.body;
@@ -105,7 +105,7 @@ app.post("/users", (req: Request, res: Response) => {
       age,
     };
     usersList.push(newUser);
-    res.status(200).send(usersList);
+    res.status(201).send(usersList);
   } catch (error: any) {
     res.status(errorCode).send(error.message);
   }
