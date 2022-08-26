@@ -8,7 +8,7 @@ const app = Express();
 app.use(Express.json());
 app.use(cors());
 
-// endpoint para buscar todos os usuários
+// endpoint que busque todos os usuários de uma lista.
 app.get("/users", (req: Request, res: Response) => {
   let errorCode = 400;
 
@@ -24,7 +24,7 @@ app.get("/users", (req: Request, res: Response) => {
   }
 });
 
-// Requisição para retornar todos os uuários que são admins
+// endpoint que busque todos os usuários que tenham uma propriedade type específica, recebendo apenas um type por vez.
 
 app.get("/users/roles", (req: Request, res: Response) => {
   let errorCode = 422;
@@ -32,10 +32,25 @@ app.get("/users/roles", (req: Request, res: Response) => {
   try {
     const typeUsers = req.body.type as string;
 
-    const adminUsers = usersList.filter((u) => u.type.toUpperCase() === typeUsers.toUpperCase());
+    const adminUsers = usersList.filter(
+      (u) => u.type.toUpperCase() === typeUsers.toUpperCase()
+    );
 
     res.status(200).send(adminUsers);
     console.log(req.query);
+  } catch (error: any) {
+    res.status(errorCode).send(error.message);
+  }
+});
+
+// endpoint de busca que encontre um usuário buscando por nome.
+
+app.get("/users/:id", (req, res) => {
+  let errorCode = 411;
+  try {
+    const name = req.body.name;
+    const userSearch = usersList.filter((u) => u.name === name);
+    res.status(200).send(userSearch);
   } catch (error: any) {
     res.status(errorCode).send(error.message);
   }
