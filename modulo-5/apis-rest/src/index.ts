@@ -36,9 +36,9 @@ app.get("/users", (req: Request, res: Response) => {
 
 app.get("/users/roles", (req: Request, res: Response) => {
   let errorCode = 422;
-  const typeUsers = req.body.type as string;
 
   try {
+    const typeUsers = req.body.type as string;
     if (!typeUsers) {
       // se a lista não existir...
       errorCode = 333;
@@ -46,6 +46,7 @@ app.get("/users/roles", (req: Request, res: Response) => {
     }
 
     if (typeUsers !== "ADMIN" && typeUsers !== "NORMAL") {
+      // se o valor digitado não corresponder com o banco de dados
       errorCode = 477;
       throw new Error("Digite um tipo válido admin/normal");
     }
@@ -63,11 +64,26 @@ app.get("/users/roles", (req: Request, res: Response) => {
 
 // endpoint de busca usuário buscando por nome.
 
-app.get("/users/:id", (req, res) => {
-  let errorCode = 411;
+app.get("/users/:name", (req, res) => {
+  let errorCode = 500;
+
   try {
-    const name = req.body.name;
-    const userSearch = usersList.filter((u) => u.name === name);
+    const name = req.params.name as string;
+    if (!name) {
+      // se não for informado nenhum valor...
+      errorCode = 668;
+      throw new Error("digite um nome de usuário");
+    }
+    const userSearch = usersList.find(
+      (u) => u.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (!userSearch) {
+      // se nenhum usuário for encontrado...
+      errorCode = 404;
+      throw new Error("Usuário não encontrado");
+    }
+
     res.status(200).send(userSearch);
   } catch (error: any) {
     res.status(errorCode).send(error.message);
