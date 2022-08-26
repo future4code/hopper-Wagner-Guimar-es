@@ -43,7 +43,7 @@ app.get("/users/roles", (req: Request, res: Response) => {
   }
 });
 
-// endpoint de busca que encontre um usuário buscando por nome.
+// endpoint de busca usuário buscando por nome.
 
 app.get("/users/:id", (req, res) => {
   let errorCode = 411;
@@ -51,6 +51,27 @@ app.get("/users/:id", (req, res) => {
     const name = req.body.name;
     const userSearch = usersList.filter((u) => u.name === name);
     res.status(200).send(userSearch);
+  } catch (error: any) {
+    res.status(errorCode).send(error.message);
+  }
+});
+
+// Crie um endpoint que use o método POST para adicionar um item ao nosso conjunto de usuários.
+
+app.post("/users", (req: Request, res: Response) => {
+  let errorCode = 402;
+
+  try {
+    const { name, email, type, age } = req.body;
+    const newUser = {
+      id: usersList.length + 1,
+      name,
+      email,
+      type,
+      age,
+    };
+    usersList.push(newUser);
+    res.status(200).send(usersList);
   } catch (error: any) {
     res.status(errorCode).send(error.message);
   }
