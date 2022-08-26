@@ -28,20 +28,18 @@ app.get("/users", (req: Request, res: Response) => {
 
 app.get("/users/roles", (req: Request, res: Response) => {
   let errorCode = 422;
-  const userRole = req.query.userRole;
 
   try {
-    const typeUsers = req.query.type
+    const typeUsers = req.body.type as string;
 
-    const adminUsers = usersList.filter((u) => u.type === "ADMIN");
+    const adminUsers = usersList.filter((u) => u.type.toUpperCase() === typeUsers.toUpperCase());
+
     res.status(200).send(adminUsers);
-
+    console.log(req.query);
   } catch (error: any) {
     res.status(errorCode).send(error.message);
   }
 });
-
-
 
 // ===============================================================
 const server = app.listen(process.env.PORT || 3003, () => {
