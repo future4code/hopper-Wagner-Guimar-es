@@ -7,7 +7,7 @@ export type USERS = {
 };
 export type STATEMENTS = {
   value: string;
-  date: string;
+  date: any;
   description: string;
 };
 

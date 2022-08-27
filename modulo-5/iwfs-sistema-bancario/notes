@@ -1,0 +1,24 @@
+📗 IWFS: Sistema Bancário
+
+Requisitos Mínimos
+01 ✅ Crie um tipo para representar uma conta para o usuário
+02 ✅ Crie um array global que armazene usuários na aplicação. 
+03 ✅ Crie mais um tipo: para representar as transações que serão salvas no extrato
+04 ✅ Dentro da definição do usuário, crie um array que armazene as transações de um cliente.
+05 ✅ Crie um endpoint  que utilize o método POST da entidade users que será responsável por cadastrar um usuário em um array de usuários
+06 ✅ Crie um método GET na entidade users função que será responsável por pegar todos os usuários existentes no array de usuários.
+07 ✅ O usuário deve possuir mais do que 18 anos para conseguir se cadastrar. Caso não possua, exiba uma mensagem de erro.
+
+
+Desafios
+01  ✅ verifiquem se o CPF passado já não está atrelado a alguma conta existente.
+02  ❌ Crie um endpoint get que receba um CPF como parâmetro e retorne o saldo da conta dousuário dono daquele CPF. A informação deve ser igual ao que estiver salvo no sistema. Se for diferente, exiba uma mensagem de erro.
+03  ❌ Crie um endpoint put que receba um nome, um CPF e um valor. Ele deve adicionar o valor ao saldo do usuário. O nome e o CPF devem ser iguais ao que estiver salvo no sistema Se algum dos dados for diferente, exiba uma mensagem de erro.
+04  ❌
+05  ❌
+06  ❌
+07  ❌
+08  ❌
+09  ❌
+10  ❌
+11  ❌

@@ -30,6 +30,7 @@ app.get("/accounts", (req: Request, res: Response) => {
 
 app.post("/account/create", (req: Request, res: Response) => {
   let errorCode = 500;
+  let testing = false;
 
   try {
     const { name, CPF, birthDate } = req.body;
@@ -47,8 +48,9 @@ app.post("/account/create", (req: Request, res: Response) => {
     let today = new Date();
     let result = today.getFullYear() - valitationDate.getFullYear();
     if (result >= 18) {
-      banco_de_dados.push(newAccount);
-      res.status(200).send(banco_de_dados);
+      // banco_de_dados.push(newAccount);
+      // res.status(200).send(banco_de_dados);
+      testing = true;
     }
     if (result === 17) {
       const monthValidantion = valitationDate.getMonth() < today.getMonth();
@@ -56,15 +58,17 @@ app.post("/account/create", (req: Request, res: Response) => {
       if (!monthValidantion) {
         const dayValidation = valitationDate.getDay() > today.getDay();
         if (!dayValidation) {
-          banco_de_dados.push(newAccount);
-          res.status(200).send(banco_de_dados);
+          // banco_de_dados.push(newAccount);
+          // res.status(200).send(banco_de_dados);
+          testing = true;
         } else {
           errorCode = 404;
           throw new Error("Você não é maior de idade");
         }
       } else {
-        banco_de_dados.push(newAccount);
-        res.status(200).send(banco_de_dados);
+        // banco_de_dados.push(newAccount);
+        // res.status(200).send(banco_de_dados);
+        testing = true;
       }
     } else if (result < 17) {
       errorCode = 404;
@@ -76,8 +80,16 @@ app.post("/account/create", (req: Request, res: Response) => {
       throw new Error("preencha todos os campos");
     }
 
-    banco_de_dados.push(newAccount);
-    res.status(200).send(banco_de_dados);
+    const cpf_validation = banco_de_dados.find((i) => i.CPF === CPF);
+
+    if (cpf_validation) {
+      errorCode = 404;
+      throw new Error("Já existe uma conta cadastrada com esse CPF");
+    }
+    if (!cpf_validation && testing === true) {
+      banco_de_dados.push(newAccount);
+      res.status(200).send(banco_de_dados);
+    }
   } catch (error: any) {
     res.status(errorCode).send(error.message);
   }
