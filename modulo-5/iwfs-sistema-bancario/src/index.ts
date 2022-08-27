@@ -118,6 +118,40 @@ app.get("/account/balance", (req: Request, res: Response) => {
   }
 });
 
+// endpoiny -desafio 3
+
+app.put("/account/", (req: Request, res: Response) => {
+  let errorCode = 500;
+
+  try {
+    let { name, cpf, balance } = req.body;
+
+    for (let i = 0; i < banco_de_dados.length; i++) {
+      if (
+        banco_de_dados[i].name.toLowerCase() !== name.toLowerCase() &&
+        banco_de_dados[i].CPF !== cpf
+      ) {
+        errorCode = 404;
+        throw new Error("Dados inválidos");
+      }
+      if (banco_de_dados[i].name.toLowerCase() !== name.toLowerCase()) {
+        errorCode = 404;
+        throw new Error("Nome não encontrado");
+      }
+      if (banco_de_dados[i].CPF !== cpf) {
+        errorCode = 404;
+        throw new Error("CPF inválido");
+      }
+
+      const balance__att = Number(banco_de_dados[i].balance + balance);
+      banco_de_dados[i].balance = balance__att;
+      res.status(200).send(banco_de_dados);
+    }
+  } catch (error: any) {
+    res.status(errorCode).send(error.message);
+  }
+});
+
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
     const adress = server.address() as AddressInfo;
