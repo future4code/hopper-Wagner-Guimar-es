@@ -1,7 +1,7 @@
 import Express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import { users } from "./DataUsers";
+import { users, USERS, STATEMENTS } from "./DataUsers";
 
 const banco_de_dados = users;
 
@@ -34,13 +34,42 @@ app.post("/account/create", (req: Request, res: Response) => {
   try {
     const { name, CPF, birthDate } = req.body;
 
-    const newAccount = {
+    let valitationDate = new Date(birthDate);
+
+    const newAccount: USERS = {
       name,
       CPF,
-      birthDate,
+      birthDate: valitationDate,
       balance: 0,
       statement: [{ value: "", date: "", description: "" }],
     };
+
+    let today = new Date();
+    let result = today.getFullYear() - valitationDate.getFullYear();
+    if (result >= 18) {
+      banco_de_dados.push(newAccount);
+      res.status(200).send(banco_de_dados);
+    }
+    if (result === 17) {
+      const monthValidantion = valitationDate.getMonth() < today.getMonth();
+
+      if (!monthValidantion) {
+        const dayValidation = valitationDate.getDay() > today.getDay();
+        if (!dayValidation) {
+          banco_de_dados.push(newAccount);
+          res.status(200).send(banco_de_dados);
+        } else {
+          errorCode = 404;
+          throw new Error("Você não é maior de idade");
+        }
+      } else {
+        banco_de_dados.push(newAccount);
+        res.status(200).send(banco_de_dados);
+      }
+    } else if (result < 17) {
+      errorCode = 404;
+      throw new Error("Você não é maior de idade");
+    }
 
     if (!newAccount) {
       errorCode = 404;
@@ -53,8 +82,6 @@ app.post("/account/create", (req: Request, res: Response) => {
     res.status(errorCode).send(error.message);
   }
 });
-
-
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {

@@ -1,11 +1,11 @@
-type USERS = {
+export type USERS = {
   name: string;
   CPF: string;
-  birthDate: string;
+  birthDate: any;
   balance: number;
   statement: STATEMENTS[];
 };
-type STATEMENTS = {
+export type STATEMENTS = {
   value: string;
   date: string;
   description: string;
@@ -15,7 +15,7 @@ export const users: USERS[] = [
   {
     name: "Wagner",
     CPF: "14445497746",
-    birthDate: "21/12/1994",
+    birthDate: "12-21-1994",
     balance: 0,
     statement: [{ value: "", date: "", description: "" }],
   },
