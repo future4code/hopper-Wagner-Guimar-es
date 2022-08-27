@@ -14,9 +14,9 @@ export type STATEMENTS = {
 export const users: USERS[] = [
   {
     name: "Wagner",
-    CPF: "14445497746",
+    CPF: "1",
     birthDate: "12-21-1994",
-    balance: 0,
+    balance: 80,
     statement: [{ value: "", date: "", description: "" }],
   },
 ];

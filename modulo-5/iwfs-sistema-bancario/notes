@@ -12,7 +12,7 @@ Requisitos Mínimos
 
 Desafios
 01  ✅ verifiquem se o CPF passado já não está atrelado a alguma conta existente.
-02  ❌ Crie um endpoint get que receba um CPF como parâmetro e retorne o saldo da conta dousuário dono daquele CPF. A informação deve ser igual ao que estiver salvo no sistema. Se for diferente, exiba uma mensagem de erro.
+02  ✅ Crie um endpoint get que receba um CPF como parâmetro e retorne o saldo da conta do usuário dono daquele CPF. A informação deve ser igual ao que estiver salvo no sistema. Se for diferente, exiba uma mensagem de erro.
 03  ❌ Crie um endpoint put que receba um nome, um CPF e um valor. Ele deve adicionar o valor ao saldo do usuário. O nome e o CPF devem ser iguais ao que estiver salvo no sistema Se algum dos dados for diferente, exiba uma mensagem de erro.
 04  ❌
 05  ❌

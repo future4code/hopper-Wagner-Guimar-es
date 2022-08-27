@@ -95,6 +95,29 @@ app.post("/account/create", (req: Request, res: Response) => {
   }
 });
 
+// end-point para consultar o saldo
+
+app.get("/account/balance", (req: Request, res: Response) => {
+  let errorCode = 500;
+
+  try {
+    const { cpf } = req.body;
+
+    const search_cpf = banco_de_dados.filter((i) => cpf === i.CPF);
+    const cpf_validantion = ` Seu saldo : ${search_cpf[0].balance} reais`;
+    if (!search_cpf) {
+      errorCode = 404;
+      throw new Error("Conta não");
+    }
+    console.log(search_cpf);
+    console.log(cpf_validantion);
+
+    res.status(200).send(cpf_validantion);
+  } catch (error: any) {
+    res.status(errorCode).send(error.message);
+  }
+});
+
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
     const adress = server.address() as AddressInfo;
