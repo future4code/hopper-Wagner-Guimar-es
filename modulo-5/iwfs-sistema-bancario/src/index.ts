@@ -42,7 +42,7 @@ app.post("/account/create", (req: Request, res: Response) => {
       CPF,
       birthDate: valitationDate,
       balance: 0,
-      statement: [{ value: "", date: "", description: "" }],
+      statement: [],
     };
 
     let today = new Date();
@@ -118,7 +118,7 @@ app.get("/account/balance", (req: Request, res: Response) => {
   }
 });
 
-// endpoiny -desafio 3
+// end-point -desafio 3
 
 app.put("/account/", (req: Request, res: Response) => {
   let errorCode = 500;
@@ -145,6 +145,48 @@ app.put("/account/", (req: Request, res: Response) => {
 
       const balance__att = Number(banco_de_dados[i].balance + balance);
       banco_de_dados[i].balance = balance__att;
+      res.status(200).send(banco_de_dados);
+    }
+  } catch (error: any) {
+    res.status(errorCode).send(error.message);
+  }
+});
+
+//end-point desafio 4
+
+app.put("/account/statement", (req: Request, res: Response) => {
+  let errorCode = 500;
+
+  try {
+    let { name, cpf, balance, statement } = req.body;
+
+    for (let i = 0; i < banco_de_dados.length; i++) {
+      if (
+        banco_de_dados[i].name.toLowerCase() !== name.toLowerCase() &&
+        banco_de_dados[i].CPF !== cpf
+      ) {
+        errorCode = 404;
+        throw new Error("Dados inválidos");
+      }
+      if (banco_de_dados[i].name.toLowerCase() !== name.toLowerCase()) {
+        errorCode = 404;
+        throw new Error("Nome não encontrado");
+      }
+      if (banco_de_dados[i].CPF !== cpf) {
+        errorCode = 404;
+        throw new Error("CPF inválido");
+      }
+
+      const balance__att = Number(banco_de_dados[i].balance + balance);
+      let statement_add = {
+        value: balance,
+        date: new Date(),
+        description: "Depósito de dinheiro",
+      };
+
+      banco_de_dados[i].balance = balance__att;
+      banco_de_dados[i].statement.push(statement_add);
+
       res.status(200).send(banco_de_dados);
     }
   } catch (error: any) {

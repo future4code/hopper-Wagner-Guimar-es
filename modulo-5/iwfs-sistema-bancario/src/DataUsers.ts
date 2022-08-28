@@ -6,7 +6,7 @@ export type USERS = {
   statement: STATEMENTS[];
 };
 export type STATEMENTS = {
-  value: string;
+  value: number;
   date: any;
   description: string;
 };
@@ -17,6 +17,7 @@ export const users: USERS[] = [
     CPF: "1",
     birthDate: "12-21-1994",
     balance: 80,
-    statement: [{ value: "", date: "", description: "" }],
+    statement: [],
+
   },
 ];
