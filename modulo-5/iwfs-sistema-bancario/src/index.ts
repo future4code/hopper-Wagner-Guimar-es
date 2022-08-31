@@ -194,6 +194,12 @@ app.put("/account/statement", (req: Request, res: Response) => {
   }
 });
 
+
+app.post("/statements/payment", (req: Request, res:Response) => {
+  
+})
+
+
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
     const adress = server.address() as AddressInfo;
