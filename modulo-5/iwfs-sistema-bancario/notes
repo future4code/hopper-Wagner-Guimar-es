@@ -1,0 +1,30 @@
+📗 IWFS: Sistema Bancário
+
+Requisitos Mínimos
+01 ✅ Crie um tipo para representar uma conta para o usuário
+02 ✅ Crie um array global que armazene usuários na aplicação. 
+03 ✅ Crie mais um tipo: para representar as transações que serão salvas no extrato
+04 ✅ Dentro da definição do usuário, crie um array que armazene as transações de um cliente.
+05 ✅ Crie um endpoint  que utilize o método POST da entidade users que será responsável por cadastrar um usuário em um array de usuários
+06 ✅ Crie um método GET na entidade users função que será responsável por pegar todos os usuários existentes no array de usuários.
+07 ✅ O usuário deve possuir mais do que 18 anos para conseguir se cadastrar. Caso não possua, exiba uma mensagem de erro.
+
+
+Desafios
+
+01  ✅ verifiquem se o CPF passado já não está atrelado a alguma conta existente.
+
+02  ✅ Crie um endpoint get que receba um CPF como parâmetro e retorne o saldo da conta do usuário dono daquele CPF. A informação deve ser igual ao que estiver salvo no sistema. Se for diferente, exiba uma mensagem de erro.
+
+03  ✅ Crie um endpoint put que receba um nome, um CPF e um valor. Ele deve adicionar o valor ao saldo do usuário. O nome e o CPF devem ser iguais ao que estiver salvo no sistema Se algum dos dados for diferente, exiba uma mensagem de erro.
+04  ✅ Altere o endpoint de adicionar saldo para que ela adicione um item ao extrato da conta do usuário: indicando o valor e a data da transação. A descrição para este tipo de item deve ser sempre a mesma ("Depósito de dinheiro"). A data pode ser salva como timestamp ou string.
+
+05  ❌ Crie um endpoint post que permita ao cliente pagar uma conta. Ela deve receber uma data de vencimento da conta, uma descrição, um valor e o CPF do titular; e salvar uma transação no extrato da conta correspondente. O saldo do usuário não deve ser atualizado neste momento. Caso nenhuma data seja passada, considere que o pagamento deve ser feito hoje.
+
+06  ❌ Crie um novo endpoint put responsável por atualizar o saldo de um cliente. Para isto, percorra os itens do extrato e atualize o saldo somente para as contas cujas datas são anteriores a hoje. 
+07  ❌ Adicione uma validação ao endpoint de pagar conta: o usuário não pode colocar uma data que já passou.
+08  ❌ Adicione mais uma validação ao endpoint de pagar conta: o usuário não pode tentar fazer um pagamento cujo valor seja maior do que seu saldo atual.
+09  ❌
+10  ❌
+11  ❌
+
